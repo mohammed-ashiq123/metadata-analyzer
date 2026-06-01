@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EXIF Forensic Tool</title>
+</head>
+<body>
+
+<h1>Digital Forensics EXIF Tool</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image">
+    <button type="submit">Analyze</button>
+</form>
+
+{% if sha256_hash %}
+<h2>SHA-256</h2>
+<p>{{ sha256_hash }}</p>
+{% endif %}
+
+{% if metadata %}
+<h2>Metadata</h2>
+<ul>
+{% for key, value in metadata.items() %}
+<li><b>{{ key }}</b>: {{ value }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+</body>
+</html>
